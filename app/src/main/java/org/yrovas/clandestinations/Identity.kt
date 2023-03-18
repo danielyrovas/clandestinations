@@ -13,9 +13,9 @@ data class Identity(
 fun randomIdentity(): Identity {
     val faker = Faker()
     return Identity(
-        faker.name.nameWithMiddle(),
-        Random.nextInt(0, 100),
-        StaticData.disguises[Random.nextInt(0, 2)],
-        faker.address.cityWithState()
+        name = faker.name.nameWithMiddle(),
+        agentID = Random.nextInt(0, 100),
+        disguise = StaticData.disguises[Random.nextInt(0, StaticData.disguises.size)],
+        address = faker.address.cityWithState()
     )
 }
