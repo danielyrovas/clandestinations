@@ -1,6 +1,7 @@
-package org.yrovas.clandestinations
+package org.yrovas.clandestinations.data
 
 import io.github.serpro69.kfaker.Faker
+import org.yrovas.clandestinations.StaticData
 import kotlin.random.Random
 
 data class Identity(

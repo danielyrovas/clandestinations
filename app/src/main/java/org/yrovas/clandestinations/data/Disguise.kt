@@ -1,4 +1,4 @@
-package org.yrovas.clandestinations
+package org.yrovas.clandestinations.data
 
 class Disguise(
     val role: String,
