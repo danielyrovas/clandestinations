@@ -13,6 +13,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.yrovas.clandestinations.data.Action
 import org.yrovas.clandestinations.data.Task
 
 @Composable
@@ -28,13 +29,14 @@ fun TaskListItem(task: Task) {
     }
     Box(modifier = Modifier
         .height(50.dp)
-        .width(300.dp)
+        .fillMaxWidth()
         //.padding(4.dp)
         .clip(RoundedCornerShape(8.dp))
         .background(Color.DarkGray)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.align(Alignment.CenterStart)
+        modifier = Modifier
+            .align(Alignment.CenterStart)
             .padding(start = 10.dp)
         ) {
             Box(
@@ -47,12 +49,42 @@ fun TaskListItem(task: Task) {
                 .padding(start = 5.dp) )
         }
         LinearProgressIndicator(progress = taskProgress,
-            Modifier.align(Alignment.CenterEnd)
+            Modifier
+                .align(Alignment.CenterEnd)
                 .padding(start = 10.dp, end = 10.dp)
                 .width(100.dp)
                 .height(18.dp)
                 .clip(shape = RoundedCornerShape(10.dp))
         )
+    }
+}
+
+@Composable
+fun ActionListItem(action: Action) {
+    Box(modifier = Modifier
+        .height(50.dp)
+        .fillMaxWidth()
+        //.padding(4.dp)
+        .clip(RoundedCornerShape(8.dp))
+        .background(Color.DarkGray)
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(start = 10.dp)
+        ) {
+            Box(
+                Modifier
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(100.dp))
+                    .background(Color.Black)
+            )
+            Text(
+                action.name, Modifier
+                    .padding(start = 5.dp)
+            )
+        }
     }
 }
 
@@ -65,4 +97,9 @@ fun TaskListItemPreview() {
         Task("name"),
         Task("name"),
     )))
+}
+@Preview
+@Composable
+fun ActionListItemPreview() {
+    ActionListItem(action = Action("Eliminate"))
 }

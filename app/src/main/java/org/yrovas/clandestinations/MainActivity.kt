@@ -8,11 +8,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.yrovas.clandestinations.data.Game
 import org.yrovas.clandestinations.data.Identity
+import org.yrovas.clandestinations.data.StaticData
 import org.yrovas.clandestinations.data.randomIdentity
 import org.yrovas.clandestinations.ui.theme.ClandestinationsTheme
 
 class MainActivity : ComponentActivity() {
-    lateinit var navHost: NavHostController
+    private lateinit var navHost: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,11 +27,11 @@ class MainActivity : ComponentActivity() {
                     identity = Identity(
                         pref.getString("name", "Name").toString(),
                         pref.getInt("agentID", 0),
-                        StaticData.disguises[disguiseID],
-                        pref.getString("address", "Address").toString()
+                        disguiseID = disguiseID,
+                        address = pref.getString("address", "Address").toString(),
                     )
                 }
-                val game = Game(identity)
+                val game = Game(identity, tasks = StaticData.tasks.toMutableList())
                 SetupNavGraph(
                     navHost,
                     game,

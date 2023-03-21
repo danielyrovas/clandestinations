@@ -1,4 +1,4 @@
-package org.yrovas.clandestinations
+package org.yrovas.clandestinations.data
 
 import org.yrovas.clandestinations.data.Action
 import org.yrovas.clandestinations.data.Disguise
@@ -11,7 +11,9 @@ class StaticData() {
             Disguise("FBI Agent"),
             Disguise("Mechanic"),
         )
-        val actions: List<Action> = listOf()
+        val actions: List<Action> = listOf(
+
+        )
         val tasks: List<Task> = listOf(
             Task(name = "Gather Security Intel", subtasks = listOf(
                 Task("Find Secure Door Lock or Keypad"),
