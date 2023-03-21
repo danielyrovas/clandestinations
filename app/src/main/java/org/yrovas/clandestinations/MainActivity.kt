@@ -7,6 +7,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import org.yrovas.clandestinations.data.Identity
+import org.yrovas.clandestinations.data.randomIdentity
 import org.yrovas.clandestinations.ui.theme.ClandestinationsTheme
 
 class MainActivity : ComponentActivity() {

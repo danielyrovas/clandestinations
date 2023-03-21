@@ -11,6 +11,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import org.yrovas.clandestinations.components.TaskListItem
+import org.yrovas.clandestinations.data.Identity
+import org.yrovas.clandestinations.data.Task
+import org.yrovas.clandestinations.data.randomIdentity
 import org.yrovas.clandestinations.ui.theme.ClandestinationsTheme
 
 @Composable

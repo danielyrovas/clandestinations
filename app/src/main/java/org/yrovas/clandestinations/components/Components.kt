@@ -9,9 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.yrovas.clandestinations.data.Task
 
 @Composable
 fun DisplayIdentity() {
@@ -19,7 +21,11 @@ fun DisplayIdentity() {
 }
 
 @Composable
-fun TaskListItem() {
+fun TaskListItem(task: Task) {
+    var taskProgress = 0.0f
+    if (task.subtasks != null) {
+        taskProgress = task.subtasks.count { it.complete }.toFloat()/task.subtasks.size
+    }
     Box(modifier = Modifier
         .height(50.dp)
         .width(300.dp)
@@ -37,13 +43,15 @@ fun TaskListItem() {
                     .clip(RoundedCornerShape(100.dp))
                     .background(Color.Black)
             )
-            Text("Task Name", Modifier
+            Text(task.name, Modifier
                 .padding(start = 5.dp) )
         }
-        LinearProgressIndicator(
+        LinearProgressIndicator(progress = taskProgress,
             Modifier.align(Alignment.CenterEnd)
                 .padding(start = 10.dp, end = 10.dp)
                 .width(100.dp)
+                .height(18.dp)
+                .clip(shape = RoundedCornerShape(10.dp))
         )
     }
 }
@@ -51,5 +59,10 @@ fun TaskListItem() {
 @Preview
 @Composable
 fun TaskListItemPreview() {
-    TaskListItem()
+    TaskListItem(Task(name = "Sneak Info", intel = 50, subtasks = listOf(
+        Task("name", complete = true),
+        Task("name", complete = true),
+        Task("name"),
+        Task("name"),
+    )))
 }
