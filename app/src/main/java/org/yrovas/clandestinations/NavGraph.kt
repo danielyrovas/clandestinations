@@ -4,29 +4,28 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import org.yrovas.clandestinations.data.Identity
+import org.yrovas.clandestinations.data.Game
 
 @Composable
 fun SetupNavGraph(
-    navHostController: NavHostController,
-    newGame: Boolean,
-    identity: Identity,
+    nav: NavHostController,
+    game: Game,
 ) {
     NavHost(
-        navController = navHostController,
+        navController = nav,
         startDestination = Screen.Welcome.route,
     ) {
         composable( route = Screen.Welcome.route
         ) {
-            WelcomeScreen(navHostController, newGame, identity)
+            WelcomeScreen(nav, game)
         }
         composable( route = Screen.Main.route
         ) {
-            MainGameScreen(navHostController)
+            MainGameScreen(nav, game)
         }
         composable( route = Screen.Character.route
         ) {
-            WelcomeScreen(navHostController, newGame, identity)
+            WelcomeScreen(nav, game)
         }
     }
 }

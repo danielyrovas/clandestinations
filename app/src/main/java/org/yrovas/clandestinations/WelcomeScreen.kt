@@ -12,18 +12,19 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.yrovas.clandestinations.components.TaskListItem
+import org.yrovas.clandestinations.data.Game
 import org.yrovas.clandestinations.data.Identity
 import org.yrovas.clandestinations.data.Task
 import org.yrovas.clandestinations.data.randomIdentity
 import org.yrovas.clandestinations.ui.theme.ClandestinationsTheme
 
 @Composable
-fun WelcomeScreen(nav: NavHostController, newGame:Boolean, identity: Identity) {
+fun WelcomeScreen(nav: NavHostController, game: Game) {
     Surface {
         Column(verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()) {
-            if (newGame) {
+            if (game.newGame) {
                 Spacer(Modifier.height(500.dp))
                 Button(onClick = { nav.navigate(Screen.Character.route)
                 },
@@ -31,7 +32,7 @@ fun WelcomeScreen(nav: NavHostController, newGame:Boolean, identity: Identity) {
                     Text(text = "Start Game")
                 }
             } else {
-                DisplayCharacterBadge(Modifier.height(500.dp), identity)
+                DisplayCharacterBadge(Modifier.height(500.dp), game.identity)
                 Spacer(Modifier.height(100.dp))
                 Button(
                     onClick = {
@@ -57,6 +58,6 @@ fun DisplayCharacterBadge(modifier: Modifier, identity: Identity) {
 @Composable
 fun WelcomeScreenPreview(nav: NavHostController = rememberNavController()) {
     ClandestinationsTheme {
-        WelcomeScreen(nav, true, randomIdentity())
+        WelcomeScreen(nav, Game(randomIdentity(), newGame = true))
     }
 }
