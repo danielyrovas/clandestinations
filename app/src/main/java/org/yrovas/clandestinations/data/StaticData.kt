@@ -1,8 +1,11 @@
 package org.yrovas.clandestinations.data
 
+import androidx.compose.ui.unit.dp
+import org.yrovas.clandestinations.R
 import org.yrovas.clandestinations.data.Action
 import org.yrovas.clandestinations.data.Disguise
 import org.yrovas.clandestinations.data.Task
+import java.lang.reflect.Modifier
 
 
 class StaticData() {
@@ -17,16 +20,16 @@ class StaticData() {
             Action("Rest")
         )
         val tasks: List<Task> = listOf(
-            Task(name = "Gather Security Intel", subtasks = listOf(
-                Task("Find Secure Door Lock or Keypad", complete = true),
-                Task("Photograph security detail"),
+            Task(name = "Gather Security Intel", icon = R.drawable.gather_intel, subtasks = listOf(
+                Task("Find Secure Door Lock or Keypad", complete = true, icon = R.drawable.infiltrate),
+                Task("Photograph security detail", icon = R.drawable.gather_intel),
             ), intel = 50),
-            Task(name = "Infiltrate", subtasks = listOf(
-                Task("Enter a building", complete = true),
-                Task("Photograph point of interest"),
+            Task(name = "Infiltrate", icon = R.drawable.infiltrate,subtasks = listOf(
+                Task("Enter a building", complete = true, icon = R.drawable.infiltrate),
+                Task("Photograph point of interest", icon = R.drawable.gather_intel),
             ), intel = 50),
-            Task(name = "Eavesdrop", subtasks = listOf(
-                Task("Record conversation"),
+            Task(name = "Eavesdrop", icon = R.drawable.remember_code, subtasks = listOf(
+                Task("Record conversation", icon = R.drawable.contact),
             ), intel = 50),
         )
         val previewGame: Game = Game(tasks = tasks.toMutableList(),
