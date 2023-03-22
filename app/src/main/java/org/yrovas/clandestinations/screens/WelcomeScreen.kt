@@ -1,4 +1,4 @@
-package org.yrovas.clandestinations
+package org.yrovas.clandestinations.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
@@ -11,23 +11,27 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import org.yrovas.clandestinations.components.TaskListItem
+import org.yrovas.clandestinations.Screen
 import org.yrovas.clandestinations.data.Game
 import org.yrovas.clandestinations.data.Identity
-import org.yrovas.clandestinations.data.Task
 import org.yrovas.clandestinations.data.randomIdentity
 import org.yrovas.clandestinations.ui.theme.ClandestinationsTheme
 
 @Composable
 fun WelcomeScreen(nav: NavHostController, game: Game) {
     Surface {
-        Column(verticalArrangement = Arrangement.Center,
+        Column(
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxSize()) {
+            modifier = Modifier.fillMaxSize()
+        ) {
             if (game.newGame) {
                 Spacer(Modifier.height(500.dp))
-                Button(onClick = { nav.navigate(Screen.Character.route)
-                },
+                Button(
+                    onClick = {
+                        game.save()
+                        nav.navigate(Screen.Character.route)
+                    },
                 ) {
                     Text(text = "Start Game")
                 }
@@ -49,8 +53,10 @@ fun WelcomeScreen(nav: NavHostController, game: Game) {
 @Composable
 fun DisplayCharacterBadge(modifier: Modifier, identity: Identity) {
     Box(modifier = modifier) {
-        Text(identity.disguise.role,
-            modifier = Modifier.align(Alignment.BottomCenter))
+        Text(
+            identity.disguise.role,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 

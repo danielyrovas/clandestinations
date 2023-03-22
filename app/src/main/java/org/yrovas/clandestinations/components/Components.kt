@@ -1,6 +1,7 @@
 package org.yrovas.clandestinations.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
@@ -9,11 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.yrovas.clandestinations.data.Action
+import org.yrovas.clandestinations.data.StaticData
 import org.yrovas.clandestinations.data.Task
 
 @Composable
@@ -22,12 +23,13 @@ fun DisplayIdentity() {
 }
 
 @Composable
-fun TaskListItem(task: Task) {
+fun TaskListItem(task: Task, onclick: () -> Unit) {
     var taskProgress = 0.0f
     if (task.subtasks != null) {
         taskProgress = task.subtasks.count { it.complete }.toFloat()/task.subtasks.size
     }
     Box(modifier = Modifier
+        .clickable { onclick() }
         .height(50.dp)
         .fillMaxWidth()
         //.padding(4.dp)
@@ -91,15 +93,10 @@ fun ActionListItem(action: Action) {
 @Preview
 @Composable
 fun TaskListItemPreview() {
-    TaskListItem(Task(name = "Sneak Info", intel = 50, subtasks = listOf(
-        Task("name", complete = true),
-        Task("name", complete = true),
-        Task("name"),
-        Task("name"),
-    )))
+    TaskListItem(task = StaticData.tasks[0], onclick = {})
 }
 @Preview
 @Composable
 fun ActionListItemPreview() {
-    ActionListItem(action = Action("Eliminate"))
+    ActionListItem(action = StaticData.actions[0])
 }

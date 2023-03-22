@@ -31,10 +31,10 @@ class MainActivity : ComponentActivity() {
                         address = pref.getString("address", "Address").toString(),
                     )
                 }
-                val game = Game(identity, tasks = StaticData.tasks.toMutableList())
                 SetupNavGraph(
                     navHost,
-                    game,
+                    //Game(identity, disguiseID == -1)
+                    StaticData.previewGame,
                 )
             }
         }

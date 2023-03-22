@@ -6,4 +6,7 @@ data class Game(
     var intel: Int = 0,
     var actions: MutableList<Action> = mutableListOf(),
     var tasks: MutableList<Task> = mutableListOf(),
-)
+) {
+    fun save() {
+    }
+}
