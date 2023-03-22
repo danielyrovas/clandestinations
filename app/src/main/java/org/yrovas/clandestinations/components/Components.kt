@@ -60,7 +60,8 @@ fun TaskListItem(task: Task, onclick: () -> Unit) {
                         .align(Alignment.Center))
             }
             Text(task.name, Modifier
-                .padding(start = 5.dp) )
+                .padding(start = 5.dp)
+            , color = Color.LightGray)
         }
         LinearProgressIndicator(progress = taskProgress,
             Modifier
@@ -96,7 +97,8 @@ fun ActionListItem(action: Action) {
             )
             Text(
                 action.name, Modifier
-                    .padding(start = 5.dp)
+                    .padding(start = 5.dp),
+                color = Color.LightGray
             )
         }
     }

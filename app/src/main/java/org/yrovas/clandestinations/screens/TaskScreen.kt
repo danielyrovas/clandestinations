@@ -82,7 +82,8 @@ fun TaskListScreenItem(task: Task) {
             Text(
                 task.name, Modifier
                     .padding(start = 5.dp, end = 5.dp)
-                    .fillMaxWidth(0.85f)
+                    .fillMaxWidth(0.85f),
+                color = Color.LightGray
             )
         }
         Button(
