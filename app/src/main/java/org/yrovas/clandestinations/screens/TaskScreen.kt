@@ -71,19 +71,20 @@ fun TaskListScreenItem(task: Task) {
                     .size(40.dp)
                     .clip(RoundedCornerShape(100.dp))
                     .background(Color.Gray)
-            ){
+            ) {
                 Image(
                     painter = painterResource(id = task.icon),
                     contentDescription = "",
                     contentScale = ContentScale.Fit,
                     modifier = Modifier
-                        .align(Alignment.Center))
+                        .align(Alignment.Center)
+                )
             }
             Text(
-                task.name, Modifier
+                task.name,
+                Modifier
                     .padding(start = 5.dp, end = 5.dp)
                     .fillMaxWidth(0.85f),
-                color = Color.LightGray
             )
         }
         Button(

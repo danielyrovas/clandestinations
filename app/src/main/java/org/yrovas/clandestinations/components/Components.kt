@@ -26,7 +26,7 @@ fun DisplayIdentity() {
 fun TaskListItem(task: Task, onclick: () -> Unit) {
     var taskProgress = 0.0f
     if (task.subtasks != null) {
-        taskProgress = task.subtasks.count { it.complete }.toFloat()/task.subtasks.size
+        taskProgress = task.subtasks.count { it.complete }.toFloat() / task.subtasks.size
     }
     Box(modifier = Modifier
         .clickable { onclick() }
@@ -36,10 +36,11 @@ fun TaskListItem(task: Task, onclick: () -> Unit) {
         .clip(RoundedCornerShape(8.dp))
         .background(Color.Yellow)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .align(Alignment.CenterStart)
-            .padding(start = 10.dp)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(start = 10.dp)
         ) {
             Box(
                 Modifier
@@ -47,10 +48,13 @@ fun TaskListItem(task: Task, onclick: () -> Unit) {
                     .clip(RoundedCornerShape(100.dp))
                     .background(Color.Black)
             )
-            Text(task.name, Modifier
-                .padding(start = 5.dp) )
+            Text(
+                task.name, Modifier
+                    .padding(start = 5.dp)
+            )
         }
-        LinearProgressIndicator(progress = taskProgress,
+        LinearProgressIndicator(
+            progress = taskProgress,
             Modifier
                 .align(Alignment.CenterEnd)
                 .padding(start = 10.dp, end = 10.dp)
@@ -62,8 +66,9 @@ fun TaskListItem(task: Task, onclick: () -> Unit) {
 }
 
 @Composable
-fun ActionListItem(action: Action) {
+fun ActionListItem(action: Action, onclick: () -> Unit) {
     Box(modifier = Modifier
+        .clickable { onclick() }
         .height(50.dp)
         .fillMaxWidth()
         //.padding(4.dp)
@@ -95,8 +100,11 @@ fun ActionListItem(action: Action) {
 fun TaskListItemPreview() {
     TaskListItem(task = StaticData.tasks[0], onclick = {})
 }
+
 @Preview
 @Composable
 fun ActionListItemPreview() {
-    ActionListItem(action = StaticData.actions[0])
+    ActionListItem(action = StaticData.actions[0]) {
+
+    }
 }

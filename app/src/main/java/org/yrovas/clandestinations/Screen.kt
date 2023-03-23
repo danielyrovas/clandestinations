@@ -6,5 +6,7 @@ sealed class Screen(val route: String) {
     object Task : Screen("task_details/{taskIndex}") {
         fun index(i: Int) = this.route.replace("{taskIndex}", "$i")
     }
+
     object Main : Screen("main")
+    object Eliminate : Screen("action_eliminate")
 }
