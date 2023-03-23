@@ -11,8 +11,9 @@ import java.lang.reflect.Modifier
 class StaticData() {
     companion object {
         val disguises: List<Disguise> = listOf(
-            Disguise("FBI Agent", "NOPE"),
-            Disguise("Mechanic", "NOPE"),
+            Disguise("FBI Agent", R.drawable.embassy,"A veteran of thirty years who has bribed every city official, judge or magistrate. No one is off their books. Willing to lie, blackmail or plant evidence to get ahead of the pack is part of their skill set for anyone who gets in their way. "),
+            Disguise("Drug Dealer", R.drawable.dealer, "This dealer has grown up believing that trafficking is the only way to make money. Passed on the tricks of the trade from their parents, they have no conscience and will do whatever it takes  to score big despite having prior convictions."),
+            Disguise("Cleaner", R.drawable.cleaner, "Happy to keep to themselves, enjoys listening to their mp3 while getting the cleaning done. Not aware of what is going on around them however something random will make them discreetly  adjust what they are doing and  silently observe while still cleaning. "),
         )
         val actions: List<Action> = listOf(
             Action("Eliminate"),
