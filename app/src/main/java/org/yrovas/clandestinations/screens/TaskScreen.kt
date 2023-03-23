@@ -57,7 +57,7 @@ fun TaskListScreenItem(task: Task) {
             .height(50.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .background(Color.DarkGray)
+            .background(Color.Yellow)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

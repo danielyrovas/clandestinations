@@ -17,19 +17,27 @@ class StaticData() {
             Action("Rest")
         )
         val tasks: List<Task> = listOf(
-            Task(name = "Gather Security Intel", subtasks = listOf(
-                Task("Find Secure Door Lock or Keypad", complete = true),
-                Task("Photograph security detail"),
-            ), intel = 50),
-            Task(name = "Infiltrate", subtasks = listOf(
-                Task("Enter a building", complete = true),
-                Task("Photograph point of interest"),
-            ), intel = 50),
-            Task(name = "Eavesdrop", subtasks = listOf(
-                Task("Record conversation"),
-            ), intel = 50),
+            Task(
+                name = "Gather Security Intel", subtasks = listOf(
+                    Task("Find Secure Door Lock or Keypad", complete = true),
+                    Task("Photograph security detail"),
+                ), intel = 50
+            ),
+            Task(
+                name = "Infiltrate", subtasks = listOf(
+                    Task("Enter a building", complete = true),
+                    Task("Photograph point of interest"),
+                ), intel = 50
+            ),
+            Task(
+                name = "Eavesdrop", subtasks = listOf(
+                    Task("Record conversation"),
+                ), intel = 50
+            ),
         )
-        val previewGame: Game = Game(tasks = tasks.toMutableList(),
+        val previewGame: Game = Game(
+            tasks = tasks.toMutableList(),
+            newGame = true,
             actions = actions.toMutableList(),
             identity = Identity(name = "John Knawledge", 99, 0, "Ontario, CA")
         )

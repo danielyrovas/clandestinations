@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import org.yrovas.clandestinations.data.Game
+import org.yrovas.clandestinations.screens.CharacterScreen
 import org.yrovas.clandestinations.screens.MainGameScreen
 import org.yrovas.clandestinations.screens.TaskScreen
 import org.yrovas.clandestinations.screens.WelcomeScreen
@@ -33,7 +34,7 @@ fun SetupNavGraph(
         composable(
             route = Screen.Character.route
         ) {
-            WelcomeScreen(nav, game)
+            CharacterScreen(nav, game)
         }
         composable(
             route = Screen.Task.route,

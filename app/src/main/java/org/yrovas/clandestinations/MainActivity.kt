@@ -21,23 +21,14 @@ class MainActivity : ComponentActivity() {
                 navHost = rememberNavController()
 
                 val pref = getPreferences(Context.MODE_PRIVATE)
-                val disguiseID = pref.getInt("disguiseID", -1)
-                var identity = randomIdentity()
-                if (disguiseID != -1) {
-                    identity = Identity(
-                        pref.getString("name", "Name").toString(),
-                        pref.getInt("agentID", 0),
-                        disguiseID = disguiseID,
-                        address = pref.getString("address", "Address").toString(),
-                    )
-                }
+
                 SetupNavGraph(
                     navHost,
-                    //Game(identity, disguiseID == -1)
-                    StaticData.previewGame,
+                    //StaticData.previewGame,
+                    Game.loadOrRandom(pref)
                 )
+
             }
         }
     }
-
 }

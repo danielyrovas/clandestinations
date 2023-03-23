@@ -34,7 +34,7 @@ fun TaskListItem(task: Task, onclick: () -> Unit) {
         .fillMaxWidth()
         //.padding(4.dp)
         .clip(RoundedCornerShape(8.dp))
-        .background(Color.DarkGray)
+        .background(Color.Yellow)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -68,7 +68,7 @@ fun ActionListItem(action: Action) {
         .fillMaxWidth()
         //.padding(4.dp)
         .clip(RoundedCornerShape(8.dp))
-        .background(Color.DarkGray)
+        .background(Color.Green)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
