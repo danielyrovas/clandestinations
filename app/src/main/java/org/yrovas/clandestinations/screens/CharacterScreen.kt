@@ -7,8 +7,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.runtime.*
@@ -46,27 +44,18 @@ fun CharacterScreen(nav: NavHostController, game: Game) {
             )
             Column(Modifier.padding(20.dp, 0.dp, 20.dp, 10.dp)) {
                 Text(text = "You are playing as:")
-                Text(text = game.identity.name)
-                Text(text = game.identity.address)
-                Text(text = game.identity.agentID.toString())
-                Text(text = game.identity.disguise.role)
-                Text(
-                    text = game.identity.disguise.description,
-                    modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 0.dp)
-                )
-            }
-            Column(
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Text(text = "You are playing as:")
                 Text(text = "Name: ${game.identity.name}")
                 Text(text = "Origin: ${game.identity.address}")
                 Text(text = "Agent ID: ${game.identity.agentID}")
                 Text(text = "Disguise: ${game.identity.disguise.role}")
-
+                Text(
+                    text = game.identity.disguise.description,
+                    modifier = Modifier.padding(0.dp, 10.dp, 0.dp, 0.dp)
+                )
                 Button(
+                    modifier = Modifier
+                        .padding(top = 10.dp, bottom = 10.dp)
+                        .align(Alignment.CenterHorizontally),
                     onClick = {
                         nav.navigate(Screen.Main.route) {
                             popUpTo(nav.graph.id)
@@ -75,15 +64,17 @@ fun CharacterScreen(nav: NavHostController, game: Game) {
                 ) {
                     Text(text = "Continue Game")
                 }
-                Button(modifier = Modifier.padding(20.dp), onClick = {
-                    game.new()
-                    nav.navigate(Screen.Welcome.route) {
-                        popUpTo(nav.graph.id) {
-                            inclusive = true
+                Button(modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.CenterHorizontally),
+                    onClick = {
+                        game.new()
+                        nav.navigate(Screen.Welcome.route) {
+                            popUpTo(nav.graph.id) {
+                                inclusive = true
+                            }
                         }
-                    }
-                }) { Text(text = "New Game") }
-
+                    }) { Text(text = "New Game") }
             }
         }
     }
